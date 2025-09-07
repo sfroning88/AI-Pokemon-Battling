@@ -2,3 +2,4 @@ dotenv
 flask
 requests
 ngrok
+supabase
