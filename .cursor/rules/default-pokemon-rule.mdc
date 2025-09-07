@@ -1,0 +1,13 @@
+---
+alwaysApply: true
+---
+Instructions:
+- Read the file "README.md" for context on the project, and store this context to memory.
+- Read app.py, chat.html, and all other files to understand the data flow and primary functions
+- Using the given goal, suggest and implement the simplest limited solution
+
+Guidelines:
+- Do not attempt to run terminal commands or create test scripts
+- Unless explicitly stated otherwise, use the SIMPLEST POSSIBLE ITERATION with the least code
+- Do not use extra debugging, and NEVER USE try/except statements
+- Match the existing style and syntax of the code
