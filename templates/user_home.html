@@ -1,5 +1,47 @@
-// html section to create frontend templates
-
-
-
-// javascript section to drive the functions
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VictoryRoadAI - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="home-body">
+    <div class="home-container">
+        <!-- Header Section -->
+        <div class="home-header">
+            <div class="welcome-section">
+                <h1 class="welcome-title">Welcome, {{ display_name or 'DISPLAY_NAME' }}</h1>
+                <p class="user-email">{{ user_email or 'email@gmail.com' }}</p>
+            </div>
+            <div class="user-avatar">
+                <img src="{{ user_logo or url_for('static', filename='User_Logo.png') }}" alt="User Avatar" class="avatar-img">
+            </div>
+        </div>
+        
+        <!-- Separator Line -->
+        <div class="header-separator"></div>
+        
+        <!-- Main Content Section -->
+        <div class="main-content">
+            <!-- Left Column - Past Teams -->
+            <div class="teams-section">
+                <h2 class="teams-header">My past teams...</h2>
+                <ul class="teams-list">
+                    <li class="team-item">Big Man Blastoise</li>
+                    <li class="team-item">Belly Drum Charizard</li>
+                    <li class="team-item">Ice Wall Rhyperior</li>
+                </ul>
+                <a href="#" class="view-more-link">view more teams...</a>
+            </div>
+            
+            <!-- Right Column - Action Buttons -->
+            <div class="actions-section">
+                <button class="action-button">Create a new team</button>
+                <button class="action-button">View my API usage</button>
+                <button class="action-button">Contact the developer</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

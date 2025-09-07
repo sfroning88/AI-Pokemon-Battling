@@ -1,21 +1,39 @@
 import os, sys
-from flask import Flask, render_template, request, jsonify
-from ngrok import connect
-from dotenv import load_dotenv
 
 # Load environment variables from .env file
+from dotenv import load_dotenv
 load_dotenv()
 
 # create a Flask app
+from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 
 # get the Ngrok token
-ngrok_token = os.environ.get('NGROK_API_TOKEN')
+from ngrok import connect
+ngrok_token = os.environ.get('NGROK_TOKEN')
+
+# create Supabase client
+from supabase import create_client
+supabase_key = os.environ.get('SUPABASE_KEY')
+supabase_url = os.environ.get('SUPABASE_URL')
+supabase = create_client(supabase_url, supabase_key)
 
 @app.route('/')
-def home():
+def login():
     return render_template('user_login.html')
+
+@app.route('/auth/callback')
+def auth_callback():
+    # Handle Google OAuth callback
+    # Extract session and redirect to user_home.html
+    pass
+
+@app.route('/home')
+def home():
+    # Check if user is authenticated
+    # Render user_home.html
+    return render_template('user_home.html')
     
 if __name__ == '__main__':
     if len(sys.argv) != 1:
