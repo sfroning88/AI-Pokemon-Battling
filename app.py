@@ -1,10 +1,14 @@
 import os, sys
 from flask import Flask, render_template, request, jsonify
 from ngrok import connect
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # create a Flask app
 app = Flask(__name__)
-app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'default_secret_key')
+app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 
 # get the Ngrok token
 ngrok_token = os.environ.get('NGROK_API_TOKEN')
@@ -12,11 +16,6 @@ ngrok_token = os.environ.get('NGROK_API_TOKEN')
 @app.route('/')
 def home():
     return render_template('user_login.html')
-
-# generic button function
-@app.route('/BUTTON_FUNCTION', methods=['POST'])
-def BUTTON_FUNCTION():
-    return jsonify({'success': True, 'message': 'Button Function success.'}), 200
     
 if __name__ == '__main__':
     if len(sys.argv) != 1:
@@ -43,13 +42,14 @@ if __name__ == '__main__':
     set_auth_token(ngrok_token)
 
     from ngrok import connect
-    tunnel = connect(5000, domain="guiding-needlessly-mallard.ngrok-free.app")
+    ngrok_domain = os.environ.get('NGROK_DOMAIN')
+    tunnel = connect(5000, domain=ngrok_domain)
 
     if tunnel is None:
         print("ERROR: Failed to connect to ngrok tunnel, check active instances")
         sys.exit(1)
 
-    print(f"CHECKPOINT: Using static domain: https://guiding-needlessly-mallard.ngrok-free.app/oauth/callback")
+    print(f"CHECKPOINT: Using static domain: {ngrok_domain}")
 
     # run the app
     app.run(debug=False, port=5000)

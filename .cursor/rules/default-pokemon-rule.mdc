@@ -3,6 +3,7 @@ alwaysApply: true
 ---
 Instructions:
 - Read the file "README.md" for context on the project, and store this context to memory.
+- Read the file "DEV.mv" to see what the current development plan is (simple and step by step)
 - Read app.py, chat.html, and all other files to understand the data flow and primary functions
 - Using the given goal, suggest and implement the simplest limited solution
 
