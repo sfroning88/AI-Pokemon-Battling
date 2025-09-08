@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Road - VictoryRoadAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="new-user-body">
+    <div class="new-user-container">
+        <h1 class="welcome-title">Welcome to the Road</h1>
+        
+        <form class="new-user-form" action="{{ url_for('create_account') }}" method="POST" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="user_display" class="form-label">Display name:</label>
+                    <input type="text" id="user_display" name="user_display" class="form-input" placeholder="Ex: primeapefan123" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="user_logo" class="form-label">Choose a logo to upload:</label>
+                    <input type="file" id="user_logo" name="user_logo" class="file-input" accept="image/*" onchange="showFileName()">
+                    <label for="user_logo" class="file-button">Select file</label>
+                    <span id="file-name" class="file-name-display"></span>
+                </div>
+            </div>
+            
+            <div class="tutorial-section">
+                <p class="tutorial-text">Insert tutorial instructions here...</p>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="create-account-button">Create Account</button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        function showFileName() {
+            const fileInput = document.getElementById('user_logo');
+            const fileNameDisplay = document.getElementById('file-name');
+            
+            if (fileInput.files.length > 0) {
+                const fileName = fileInput.files[0].name;
+                fileNameDisplay.textContent = 'Attached: ' + fileName;
+                fileNameDisplay.style.color = '#4CAF50';
+            } else {
+                fileNameDisplay.textContent = '';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -11,11 +11,11 @@
         <!-- Header Section -->
         <div class="home-header">
             <div class="welcome-section">
-                <h1 class="welcome-title">Welcome, {{ display_name or 'DISPLAY_NAME' }}</h1>
+                <h1 class="welcome-title">Welcome, {{ user_display or 'USER_DISPLAY' }}</h1>
                 <p class="user-email">{{ user_email or 'email@gmail.com' }}</p>
             </div>
             <div class="user-avatar">
-                <img src="{{ user_logo or url_for('static', filename='User_Logo.png') }}" alt="User Avatar" class="avatar-img">
+                <img src="{{ avatar_url or url_for('static', filename='User_Logo.png') }}" alt="User Avatar" class="avatar-img">
             </div>
         </div>
         
