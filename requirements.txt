@@ -3,3 +3,6 @@ flask
 requests
 ngrok
 supabase
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
